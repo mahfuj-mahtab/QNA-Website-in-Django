@@ -20,5 +20,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view,name = "home"),
     path('about/',about,name = "about"),
+    path('show_answer/',show_answer_view,name = 'answer'),
+    path('search/',search_view,name = 'search'),
+    path('signup/',signup_view,name = 'signup'),
+    path('ask_question/',ask_question_view,name = 'askquestion'),
+    path('pagination/',pagination_view,name = 'pagination'),
+    path('profile/',profile_view,name = 'profile'),
+    path('profile_setting/',profile_setting_view,name = 'profilesetting'),
+    path('category/',category_view,name = 'category'),
 
 ]
