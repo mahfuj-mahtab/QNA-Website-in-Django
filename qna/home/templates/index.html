@@ -1,38 +1,36 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QNA-Index</title>
-    <script src="https://kit.fontawesome.com/5d4ee011b6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'style/style.css/' %}">
+    {% block headers %}
     
-</head>
-<body>
+    <div class="header">
+        <div class="main_header">
+            <h3 class="logo">ASK.COM</h3>
+            <form action="">
+                <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
+            </form>
+            
+            <a class="register-btn" href=""><i class="fa-solid fa-magnifying-glass"></i>Register / Login</a>
+        </div>
+       
+    </div>
+    {% endblock headers %}
+    
+    {% block banner %}
+    <div class="banner">
+        <div class="main_banner">
+            <h2>Welcome To ASK.COM</h2>
+            <p>Ask Any Question And <br> Get Answered</p>
+            <a href="" class="ask_question">Ask  Question</a>
+        </div>
+            
+    </div>
+    {% endblock banner %}
+    {% block body %}
     <div class="container">
-        <div class="header">
-            <div class="main_header">
-                <h3 class="logo">ASK.COM</h3>
-                <form action="">
-                    <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
-                </form>
-                
-                <a class="register-btn" href=""><i class="fa-solid fa-magnifying-glass"></i>Register / Login</a>
-            </div>
-           
-        </div>
-        <div class="banner">
-            <div class="main_banner">
-                <h2>Welcome To ASK.COM</h2>
-                <p>Ask Any Question And <br> Get Answered</p>
-                <a href="" class="ask_question">Ask  Question</a>
-            </div>
-                
-        </div>
+        
         <div class="main_container">
+            
          <div class="left_main_container">
 
             <div class="question"><div class="logo_section">
@@ -209,13 +207,14 @@
 
          </div>
          <div class="right_main_container">
+            
             <div class="overview">
                 <p class="p1">6.5k<br>  Questions</p>
                 <p class="p1">6.3k<br>Answered</p>
                 <p class="p1">99%<br>Answered</p>
 
             </div>
-
+            
             <div class="top_user">
                 <h3>Top Users</h3>
                 <div class="user">
@@ -270,6 +269,7 @@
             </div>
          </div>
         </div>
+        {% block pagination %}
         <div class="pagination_section">
             <div class="main_pagination_section">
 
@@ -283,7 +283,8 @@
             </div>
 
         </div>
-        <div class="footer">All Right Reserved @ ask.com</div>
+        {% endblock pagination %}
+       
+       {% block footer %} <div class="footer">All Right Reserved @ ask.com</div> {% endblock %}
     </div>
-</body>
-</html>
+    {% endblock body %}
