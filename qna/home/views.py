@@ -15,7 +15,13 @@ def search_view(request):
     return HttpResponse('Hello search page')
 
 def signup_view(request):
-    return HttpResponse('Hello signup/login page')
+    return render(request, "Register.html")
+
+def login(request):
+    return render(request, "Login.html")
+
+def recover(request):
+    return render(request, "Recover.html")
 
 def ask_question_view(request):
     return HttpResponse('Hello ask question page')
