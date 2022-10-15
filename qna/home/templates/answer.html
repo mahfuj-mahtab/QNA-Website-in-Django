@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %} Answer Page {% endblock title %}
+
+{% load static %}
+
+    {% block headers %}
+    
+    <div class="header">
+        <div class="main_header">
+            <h3 class="logo">ASK.COM</h3>
+            <form action="">
+                <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
+            </form>
+            
+            <a class="register-btn" href="/signup"><i class="fa-solid fa-magnifying-glass"></i>Register / Login</a>
+        </div>
+       
+    </div>
+    {% endblock headers %}
+    
+    {% block banner %}
+    <div class="banner">
+        <div class="main_banner">
+            <h2>Welcome To ASK.COM</h2>
+            <p>Ask Any Question And <br> Get Answered</p>
+            <a href="https://google.com" target="_blank" class="ask_question">Ask  Question</a>
+        </div>
+            
+    </div>
+    {% endblock banner %}
+    {% block body %}
+    
+
+    <div class="container">
+        <div class="main_container">
+            <div class="left_main_container">
+
+                <div class="answer_details">
+                    <div class="answer_details_top"></div>
+                </div>
+
+
+
+
+            </div>
+            <div class="right_main_container">
+            
+                <div class="overview">
+                    <p class="p1">6.5k<br>  Questions</p>
+                    <p class="p1">6.3k<br>Answered</p>
+                    <p class="p1">99%<br>Answered</p>
+    
+                </div>
+                
+                <div class="top_user">
+                    <h3>Top Users</h3>
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+    
+                    <div class="user">
+                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                    </div>
+                </div>
+             </div>
+        </div>
+        
+        {% block footer %} <div class="footer">All Right Reserved @ ask.com</div> {% endblock %}
+    </div>
+
+
+
+{% endblock body %}

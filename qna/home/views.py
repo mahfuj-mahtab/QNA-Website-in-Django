@@ -8,7 +8,7 @@ def about(request):
     return render(request,"about.html")
 
 def show_answer_view(request):
-    return HttpResponse('Hello show answer  page')
+    return render(request,'answer.html')
 
 
 def search_view(request):

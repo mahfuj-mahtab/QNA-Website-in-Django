@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view,name = "home"),
     path('about/',about,name = "about"),
-    path('show_answer/',show_answer_view,name = 'answer'),
+    path('answer/',show_answer_view,name = 'answer'),
     path('search/',search_view,name = 'search'),
     path('signup/',signup_view,name = 'signup'),
     path('ask_question/',ask_question_view,name = 'askquestion'),
