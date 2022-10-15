@@ -12,13 +12,29 @@
     
 </head>
 <body> 
-  {% block headers %}
+ 
+    
+  <div class="header">
+      <div class="main_header">
+          <h3 class="logo">ASK.COM</h3>
+          <form action="">
+              <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
+          </form>
+          
+          <a class="register-btn" href="/signup"><i class="fa-solid fa-magnifying-glass"></i>Register / Login</a>
+      </div>
+     
+  </div>
+ 
+  <div class="banner">
+      <div class="main_banner">
+          <h2>Welcome To ASK.COM</h2>
+          <p>Ask Any Question And <br> Get Answered</p>
+          <a href="https://google.com" target="_blank" class="ask_question">Ask  Question</a>
+      </div>
+          
+  </div>
 
-    {% endblock headers %}
-
-   
-   
-  {% block banner %} {% endblock banner %}
        {% block body %}
        {% block overview %} {% endblock overview %}
         <!-- {% block pagination %} {% endblock pagination %}
