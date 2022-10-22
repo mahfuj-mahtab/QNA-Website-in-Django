@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "home",
     'questions',
     'answer',
+    'category',
 ]
 
 MIDDLEWARE = [
