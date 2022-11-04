@@ -471,7 +471,13 @@ margin-left: 45px;
 
 }
 .answer_section h1{
-    margin-top: 20px;
+    margin-top: 60px;
     margin-left: 35px;
     display: block;
+}
+.likedislikepart{
+    margin-left: 750px;
+}
+.material-symbols-outlined{
+    margin-right: 10px;
 }
