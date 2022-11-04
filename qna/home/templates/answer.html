@@ -4,20 +4,7 @@
 
 {% load static %}
 
-    {% block headers %}
-    
-    <div class="header">
-        <div class="main_header">
-            <h3 class="logo">ASK.COM</h3>
-            <form action="">
-                <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
-            </form>
-            
-            <a class="register-btn" href="/signup"><i class="fa-solid fa-magnifying-glass"></i>Register / Login</a>
-        </div>
-       
-    </div>
-    {% endblock headers %}
+
     
     {% block banner %}
     <div class="banner">
@@ -108,9 +95,9 @@
              </div>
         </div>
         
-        {% block footer %} <div class="footer">All Right Reserved @ ask.com</div> {% endblock %}
     </div>
-
-
-
-{% endblock body %}
+    
+    {% endblock body %}
+    {% block footer %} <div class="footer2">All Right Reserved @ ask.com</div> {% endblock %}
+    
+    

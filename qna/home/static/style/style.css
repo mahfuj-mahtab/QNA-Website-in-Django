@@ -5,6 +5,7 @@
 .container{
     width: 1920px;
     height: auto;
+    position: relative;
 }
 .header{
     width: 1920px;
@@ -136,7 +137,7 @@
     height: auto;
     float: right;
     /* border: 1px solid blueviolet; */
-    overflow: hidden;
+    /* overflow: hidden; */
     padding-bottom: 50px;
 }
 .question{
@@ -330,6 +331,19 @@ margin-left: 45px;
     background: #294B64;
     text-align: center;
     color: white;
+    position: absolute;
+
+
+}
+.footer2{
+    width: 1920px;
+    height: 85px;
+    line-height: 85px;
+    background: #294B64;
+    text-align: center;
+    color: white;
+    
+    margin-top: 1500px;;
 
 
 }
@@ -345,6 +359,7 @@ margin-left: 45px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 26px;
     margin-top: 30px;
+    /* position: relative; */
 }
 .answer_details_top{
     width: 100%;
