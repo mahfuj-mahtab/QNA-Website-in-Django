@@ -481,3 +481,37 @@ margin-left: 45px;
 .material-symbols-outlined{
     margin-right: 10px;
 }
+
+.answerformsection{
+    margin-top: 100px;
+    width: 100%;
+
+}
+.answerformsection textarea{
+    margin-left: 50px;
+    border-radius: 20px;
+
+}
+textarea::placeholder{
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.answer-btn{
+    color: white;
+    text-decoration: none;
+    font-size: 19px;
+    width: 170px;
+    height: 40px;
+    /* line-height: 40px; */
+    /* border: 1px solid red; */
+    display: block;
+    /* float: left; */
+    /* margin-left: 90px; */
+    /* position: relative; */
+    /* margin-top: 25px; */
+    margin-left: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: #E07C24;
+    border-radius: 10px;
+}
