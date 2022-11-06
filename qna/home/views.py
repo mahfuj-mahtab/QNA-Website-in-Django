@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def home_view(request):
@@ -24,7 +24,7 @@ def recover(request):
     return render(request, "Recover.html")
 
 def ask_question_view(request):
-    return HttpResponse('Hello ask question page')
+    return render(request,"askquestion.html")
 
 def pagination_view(request):
     return HttpResponse('Hello pagination  page')
