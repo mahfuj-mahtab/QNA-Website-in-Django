@@ -539,3 +539,42 @@ textarea::placeholder{
 .bg{
     background: #F8F8F8
 }
+.ask_input{
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 600px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(149, 146, 146);
+    margin-bottom: 20px;
+}
+.ask_section_main input::placeholder{
+    padding-left: 20px;
+}
+.ask_textarea{
+    margin-left: 30px;
+    border-radius: 10px;
+
+}
+.ask_input_select{
+    margin-top: 15px;
+    margin-left: 30px;
+    width: 600px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(149, 146, 146);
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.ask_btn{
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 600px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(149, 146, 146);
+    margin-bottom: 20px;
+    background: #294B64;
+    color: white;
+}
