@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from home.models import OurUser
 
 # Create your views here.
 def home_view(request):
@@ -15,7 +16,13 @@ def search_view(request):
     return HttpResponse('Hello search page')
 
 def signup_view(request):
-    return render(request, "Register.html")
+    if(request.method == "POST"):
+        user = OurUser(name = request.POST['fullname'], email = request.POST['email'])
+        user.save()
+        
+        
+    else:
+        return render(request, "Register.html")
 
 def login(request):
     return render(request, "Login.html")
