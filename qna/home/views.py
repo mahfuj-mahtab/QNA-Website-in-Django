@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,HttpResponseRedirect
 from home.models import OurUser
 
 # Create your views here.
@@ -17,8 +17,27 @@ def search_view(request):
 
 def signup_view(request):
     if(request.method == "POST"):
-        user = OurUser(name = request.POST['fullname'], email = request.POST['email'])
-        user.save()
+        name = request.POST['fullname']
+        email = request.POST['email']
+        username = request.POST['username']
+        password = request.POST['password']
+
+        emailcount = OurUser.objects.all().filter(email = email)
+
+        if(len(emailcount) > 0):
+            print("More than one email")
+        else:
+            usercount = OurUser.objects.all().filter(user = username)
+            if(len(usercount) > 0):
+                print("more than one user name")
+            else:
+                if(len(password) >= 8):
+                    user = OurUser(name = name, email = email,password = password,user = username,Num_of_followers = 0,Num_of_following = 0,img = "default.jpg",phone_No = 0,Bio = '')
+                    user.save()
+                    return HttpResponseRedirect("/")
+                else:
+                    print("password is less than 8 char")
+       
         
         
     else:
