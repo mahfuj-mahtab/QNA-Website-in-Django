@@ -55,9 +55,19 @@
     padding-left: 10px;
     margin-right: 0px;
     float: left;
-    margin-left: 600px;
+    margin-left: 450px;
     margin-top: 20px;
     position: relative;
+}
+.profile_picture{
+    width: 60px;
+    line-height: 85px;
+    height: 60px;
+    margin-top: 15px;
+    float: left;
+    /* display: block; */
+    margin-left: 10px;
+    border-radius: 50%;
 }
 .fa-magnifying-glass{
     color: white;

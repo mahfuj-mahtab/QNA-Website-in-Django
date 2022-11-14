@@ -30,5 +30,6 @@ urlpatterns = [
     path('profile/',profile_view,name = 'profile'),
     path('profile_setting/',profile_setting_view,name = 'profilesetting'),
     path('category/',category_view,name = 'category'),
+    path('logout/', logout, name = 'logout'),
 
 ]

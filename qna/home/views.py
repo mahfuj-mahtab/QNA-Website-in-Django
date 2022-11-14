@@ -3,8 +3,13 @@ from home.models import OurUser
 
 # Create your views here.
 def home_view(request):
-    print(request.session['0'])
-    return render(request,"index.html")
+    if request.session['active'] == True:
+        print("session available")
+        my_user = OurUser.objects.filter(email = request.session['0'])
+        return render(request,"index.html",{"my_users" : my_user[0], "registered" : True})
+    else:
+        print("sorry session not available")
+        return render(request,"index.html")
 
 def about(request):
     return render(request,"about.html")
@@ -53,6 +58,7 @@ def login(request):
             if(ecount[0].password == password):
                 print("login")
                 request.session[0] = email
+                request.session['active'] = True
                 return HttpResponseRedirect("/")
 
             else:
@@ -65,6 +71,12 @@ def login(request):
 
     else:
         return render(request, "Login.html")
+
+def logout(request):
+    del request.session['0']
+    request.session['active'] = False
+    request.session.modified = True
+    return HttpResponseRedirect("/")
 
 def recover(request):
     return render(request, "Recover.html")
