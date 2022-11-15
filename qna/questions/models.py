@@ -7,4 +7,4 @@ class Questions(models.Model):
     title = models.CharField(max_length = 30)
     details = models.CharField(max_length = 50)
     u_email = models.CharField(max_length=50,null = True)
-    cat_name = models.ForeignKey(Category,null = False,on_delete=models.CASCADE)
+    cat_name = models.CharField(max_length=100,null=True)

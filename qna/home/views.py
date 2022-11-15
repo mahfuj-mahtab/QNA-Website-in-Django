@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse,HttpResponseRedirect
 from home.models import OurUser
 from questions.models import Questions
+from category.models import Category
 # Create your views here.
 def home_view(request):
     if request.session['active'] == True:
@@ -91,8 +92,9 @@ def ask_question_view(request):
     else:
         if request.session['active'] == True:
             print("session available")
+            category = Category.objects.all()
             my_user = OurUser.objects.filter(email = request.session['0'])
-            return render(request,"askquestion.html",{"my_users" : my_user[0], "registered" : True})
+            return render(request,"askquestion.html",{"my_users" : my_user[0], "registered" : True, "category" : category})
         else:
             print("sorry session not available")
             return HttpResponseRedirect("/login")
