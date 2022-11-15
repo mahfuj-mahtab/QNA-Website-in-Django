@@ -1,38 +1,14 @@
-
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask Question</title>
-    <script src="https://kit.fontawesome.com/5d4ee011b6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'style/style.css/' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    
-</head>
-<body> 
- 
-    
-  <div class="header">
-      <div class="main_header">
-          <h3 class="logo">ASK.COM</h3>
-          <form action="">
-              <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
-          </form>
-          
-          <a class="register-btn" href="/signup"><i class="fa-solid fa-magnifying-glass"></i>Register / Login</a>
-      </div>
-     
-  </div>
 
+{% block body %}
 <div class="container bg">
     <div class="main_container ">
         <div class="ask_section">
             <div class="ask_section_main">
-                <form action="">
+                <form action="" method="POST">
+                    {% csrf_token %}
                     <input type="text" name="title" id="" class="ask_input" placeholder="Please Enter Question Title"><br>
                     <textarea name="details" id="" cols="80" rows="25" class="ask_textarea" placeholder="Please Enter Question Details"></textarea><br>
                     <select name="category" id="" class="ask_input_select">
@@ -48,7 +24,9 @@
     </div>
 </div>
 
- <div class="footer">All Right Reserved @ ask.com</div> 
+{% endblock body %}
+
+{% block footer %} <div class="footer">All Right Reserved @ ask.com</div> {% endblock footer%}
 
 
 </body>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse,HttpResponseRedirect
 from home.models import OurUser
-
+from questions.models import Questions
 # Create your views here.
 def home_view(request):
     if request.session['active'] == True:
@@ -82,13 +82,32 @@ def recover(request):
     return render(request, "Recover.html")
 
 def ask_question_view(request):
-    return render(request,"askquestion.html")
+    if(request.method == 'POST'):
+        title = request.POST['title']
+        details = request.POST['details']
+        category = request.POST['category']
+        q = Questions(title = title , details = details,u_email = request.session['0'],cat_name = category)
+        q.save()
+    else:
+        if request.session['active'] == True:
+            print("session available")
+            my_user = OurUser.objects.filter(email = request.session['0'])
+            return render(request,"askquestion.html",{"my_users" : my_user[0], "registered" : True})
+        else:
+            print("sorry session not available")
+            return HttpResponseRedirect("/login")
 
 def pagination_view(request):
     return HttpResponse('Hello pagination  page')
 
 def profile_view(request):
-    return HttpResponse('Hello profile page')
+    if request.session['active'] == True:
+        print("session available")
+        my_user = OurUser.objects.filter(email = request.session['0'])
+        return render(request,"profile.html",{"my_users" : my_user[0], "registered" : True})
+    else:
+        print("sorry session not available")
+    return render(request,'profile.html')
 
 def profile_setting_view(request):
     return HttpResponse('Hello profile setting page')
