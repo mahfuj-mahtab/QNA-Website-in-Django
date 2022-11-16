@@ -4,13 +4,14 @@ from questions.models import Questions
 from category.models import Category
 # Create your views here.
 def home_view(request):
+    questions = Questions.objects.all()
     if request.session['active'] == True:
         print("session available")
         my_user = OurUser.objects.filter(email = request.session['0'])
-        return render(request,"index.html",{"my_users" : my_user[0], "registered" : True})
+        return render(request,"index.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions})
     else:
         print("sorry session not available")
-        return render(request,"index.html")
+        return render(request,"index.html",{"questions" : questions})
 
 def about(request):
     return render(request,"about.html")
@@ -89,6 +90,7 @@ def ask_question_view(request):
         category = request.POST['category']
         q = Questions(title = title , details = details,u_email = request.session['0'],cat_name = category)
         q.save()
+        return HttpResponseRedirect("/")
     else:
         if request.session['active'] == True:
             print("session available")

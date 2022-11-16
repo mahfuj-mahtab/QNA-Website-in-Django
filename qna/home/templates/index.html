@@ -18,177 +18,27 @@
             
          <div class="left_main_container">
 
-            <div class="question"><div class="logo_section">
+            {% for question in questions %}
+
+            <div class="question">
+                <!-- <div class="logo_section">
                 <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}" alt=""></a>
-            </div>
+            </div> -->
             <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
+                <a class="title_a" href=""><h3 class="question_title">{{ question.title }}</h3></a>
                 <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
+                    <a href="#" class="cat">{{ question.cat_name }}</a>
+                   
                 
                 </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
+                <p class="time">{{ question.time }}</p>
+                <!-- <p class="total_ans"><b>11 Answered</b></p> -->
 
             </div>
             </div>
+{% endfor %}
 
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
-
-
-
-            <div class="question"><div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}"  alt=""></a>
-            </div>
-            <div class="rest">
-                <a class="title_a" href=""><h3 class="question_title">What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?What Is Programming?Can Anyone tell?</h3></a>
-                <div class="category_section">
-                    <a href="#" class="cat">Programming</a>
-                    <a href="#" class="cat">java</a>
-                
-                </div>
-                <p class="time">Asked 11 Hours ago</p>
-                <p class="total_ans"><b>11 Answered</b></p>
-
-            </div>
-            </div>
+    
 
          </div>
          <div class="right_main_container">

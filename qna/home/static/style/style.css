@@ -151,12 +151,13 @@
     padding-bottom: 50px;
 }
 .question{
-    width: 948px;
+    width: 908px;
     height: 130px;
     /* border: 1px solid red; */
     border-bottom: 1px solid #207398;
     margin-top: 20px;
     overflow: hidden;
+    padding-left: 40px;
 }
 .logo_img{
     width: 70px;
@@ -176,6 +177,7 @@
     margin-top: 6px;
     text-align: justify;
     margin-bottom: 14px;
+    font-size: 22px;
     /* margin-left: 10px; */
 }
 
@@ -197,6 +199,7 @@
     float: left;
     display: block;
     margin-right: 5px;
+    font-size: 13px;
 
 }
 .logo_section{
