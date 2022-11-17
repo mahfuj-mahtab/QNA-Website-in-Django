@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse,HttpResponseRedirect
 from home.models import OurUser
 from questions.models import Questions
 from category.models import Category
+from answer.models import Answer
 # Create your views here.
 def home_view(request):
     questions = Questions.objects.all()
@@ -16,8 +17,20 @@ def home_view(request):
 def about(request):
     return render(request,"about.html")
 
-def show_answer_view(request):
-    return render(request,'answer.html')
+def show_answer_view(request,id):
+    if(request.method == 'POST'):
+        answer = request.POST['answer']
+        a = Answer(Q_answer = answer, like = 0, dislike = 0,u_email = request.session['0'],Q_ID = id)
+        a.save()
+    else:      
+        ques = Questions.objects.filter(id = id)
+        ans = Answer.objects.all().filter(Q_ID = id)
+        if request.session['active'] == True:
+            print("session available")
+            my_user = OurUser.objects.filter(email = request.session['0'])
+            return render(request,'answer.html',{"question": ques[0],"my_users" : my_user[0], "registered" : True,"answers" : ans})
+        else:
+            return render(request,'answer.html',{"question": ques[0],"answers" : ans})
 
 
 def search_view(request):

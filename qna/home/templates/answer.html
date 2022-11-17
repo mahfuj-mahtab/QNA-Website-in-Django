@@ -29,18 +29,18 @@
                             <img src="{% static 'img/mohot.jpg' %} " alt="" class="question_profile">
                         </div>
                         <div class="answer_details_top_right">
-                            <h3 class="q_title">What Is Machine Learning</h3>
+                            <h3 class="q_title">{{ question.title }}</h3>
                      
-                            <a href="" class="answer_category">Electronics</a>
-                            <a href="" class="answer_category">Computer</a>
-                            <span class="time">Asked 11 Hours Ago</span>
+                            <a href="" class="answer_category">{{ question.cat_name }}</a>
+                            
+                            <span class="time">{{ question.time }}</span>
                             <span class="views"><b>View : 3.2K</b></span>
                         </div>
                        
                         
                     </div>
                     <div class="answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet neque quod aperiam voluptate modi in minima officia a repellat ea veritatis exercitationem distinctio doloribus voluptatum explicabo, ratione mollitia possimus dolorum, aliquid beatae. Culpa cumque fugit at minus fuga facere placeat ratione quae similique rerum quia consequuntur fugiat, in voluptatibus aliquam voluptatum officia voluptas neque adipisci? Eius atque ad animi omnis magni ut hic reprehenderit quis, optio enim neque odio est nihil. Eos ab nam iusto ullam vel? Velit blanditiis minus delectus laboriosam optio aut consectetur consequatur asperiores? Iure rem aliquam maiores provident ea neque eum obcaecati architecto, amet aut animi inventore deleniti quas a suscipit est quos beatae, repellendus praesentium error quam delectus. Illo impedit ut, fuga labore perferendis voluptatum distinctio deleniti earum tempora sapiente assumenda, ullam eos similique fugiat quod nisi libero culpa adipisci? Minima odit id voluptatibus vitae, iste, deserunt consequuntur dicta quisquam at sunt atque impedit enim perspiciatis distinctio dolore autem quam natus, eum quis sequi vel. Commodi quas, accusamus tempora quam dolorem esse explicabo, neque nemo ad id vel magnam ipsa hic doloribus dignissimos sit cupiditate reiciendis autem amet? Molestiae optio iusto, fugiat eum placeat animi commodi? Hic at voluptatibus vitae nisi. Sapiente explicabo deleniti ex ipsa excepturi alias rem possimus cupiditate cum consectetur quam iusto nobis ut molestias repellat at, porro odit dolor. Delectus ab alias perferendis cum debitis ut corrupti, provident doloribus natus quaerat quae odit reiciendis est quod asperiores, quas vero dolorum voluptate labore nesciunt veniam? Tempora, et dicta eveniet possimus at est ullam, qui magni beatae veniam nulla? Cum blanditiis officia architecto necessitatibus? Pariatur accusantium, tenetur consequuntur commodi dolorem quidem necessitatibus blanditiis deleniti magni suscipit earum vero qui temporibus repellendus expedita cumque. Facere vitae, reiciendis ipsam pariatur distinctio rem voluptate cumque unde perferendis repellat beatae rerum voluptates, officia quaerat incidunt sunt odit?</p>
+                        <p>{{ question.details }}</p>
                     </div>
                     <div class="likedislike">
                         
@@ -50,6 +50,7 @@
 
                 <div class="answer_section">
                     <h1>Answer Section</h1>
+                    {% for answer in answers %}
                     <div class="answer_details2">
                         <div class="answer_details_top2">
                             <div class="answer_details_top_left2">
@@ -64,8 +65,9 @@
                            
                             
                         </div>
+                        
                         <div class="answer">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet neque quod aperiam voluptate modi in minima officia a repellat ea veritatis exercitationem distinctio doloribus voluptatum explicabo, ratione mollitia possimus dolorum, aliquid beatae. Culpa cumque fugit at minus fuga facere placeat ratione quae similique rerum quia consequuntur fugiat, in voluptatibus aliquam voluptatum officia voluptas neque adipisci? Eius atque ad animi omnis magni ut hic reprehenderit quis, optio enim neque odio est nihil. Eos ab nam iusto ullam vel? Velit blanditiis minus delectus laboriosam optio aut consectetur consequatur asperiores? Iure rem aliquam maiores provident ea neque eum obcaecati architecto, amet aut animi inventore deleniti quas a suscipit est quos beatae, repellendus praesentium error quam delectus. Illo impedit ut, fuga labore perferendis voluptatum distinctio deleniti earum tempora sapiente assumenda, ullam eos similique fugiat quod nisi libero culpa adipisci? Minima odit id voluptatibus vitae, iste, deserunt consequuntur dicta quisquam at sunt atque impedit enim perspiciatis distinctio dolore autem quam natus, eum quis sequi vel. Commodi quas, accusamus tempora quam dolorem esse explicabo, neque nemo ad id vel magnam ipsa hic doloribus dignissimos sit cupiditate reiciendis autem amet? Molestiae optio iusto, fugiat eum placeat animi commodi? Hic at voluptatibus vitae nisi. Sapiente explicabo deleniti ex ipsa excepturi alias rem possimus cupiditate cum consectetur quam iusto nobis ut molestias repellat at, porro odit dolor. Delectus ab alias perferendis cum debitis ut corrupti, provident doloribus natus quaerat quae odit reiciendis est quod asperiores, quas vero dolorum voluptate labore nesciunt veniam? Tempora, et dicta eveniet possimus at est ullam, qui magni beatae veniam nulla? Cum blanditiis officia architecto necessitatibus? Pariatur accusantium, tenetur consequuntur commodi dolorem quidem necessitatibus blanditiis deleniti magni suscipit earum vero qui temporibus repellendus expedita cumque. Facere vitae, reiciendis ipsam pariatur distinctio rem voluptate cumque unde perferendis repellat beatae rerum voluptates, officia quaerat incidunt sunt odit?</p>
+                            <p>{{ answer.Q_answer }}</p>
                         </div>
                         <span class="likedislikepart"> <span class="num">54</span>
                         <span class="material-symbols-outlined">
@@ -78,6 +80,7 @@
                                 </span>
                         </span>
                     </div>
+                    {% endfor %}
 
                     <div class="ansreply">
                         
@@ -85,13 +88,20 @@
 
 
                 </div>
+                
 
                 <div class="answerformsection">
+                    {% if registered == True %}
                     <form action="" method="post">
-                        <textarea name="" id="" cols="90" rows="10" placeholder="Please Enter Your Answer"></textarea>
+                        {% csrf_token %}
+                        <textarea name="answer" id="" cols="90" rows="10" placeholder="Please Enter Your Answer"></textarea>
                         <input class="answer-btn" type="submit" value="Answer">
                     </form>
+                    {% else %}
+                        <h1 class="war">You need to login to answer</h1>
+                    {% endif %}
                 </div>
+
 
             </div>
             <div class="right_main_container">
