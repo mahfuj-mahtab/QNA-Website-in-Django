@@ -159,6 +159,20 @@
     overflow: hidden;
     padding-left: 40px;
 }
+.profile_bottom_section{
+    width: 800px;
+    margin-left: 200px;
+    height: 1000px;
+}
+.question2{
+    width: 800px;
+    height: 130px;
+    /* border: 1px solid red; */
+    border-bottom: 1px solid #207398;
+    margin-top: 20px;
+    overflow: hidden;
+    /* padding-left: 40px; */
+}
 .logo_img{
     width: 70px;
     height: 70px;
@@ -214,6 +228,13 @@
 }
 .rest{
     width: 830px;
+    height: 100%;
+   
+    float: left;
+    padding-left: 10px;
+}
+.rest2{
+    width: 800px;
     height: 100%;
    
     float: left;
@@ -556,6 +577,9 @@ textarea::placeholder{
 .bg{
     background: #F8F8F8
 }
+.bg2{
+    background: #e2dede;
+}
 .ask_input{
     margin-top: 30px;
     margin-left: 30px;
@@ -594,4 +618,112 @@ textarea::placeholder{
     margin-bottom: 20px;
     background: #294B64;
     color: white;
+}
+.profile_div{
+    width: 900px;
+    height: 300px;
+    margin-left: 150px;
+    /* padding-top: 50px; */
+    border-radius: 20px;
+    background: white;
+    box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.main_profile_div{
+    width: 100%;
+    min-height: 1000px;
+    background:#fcfcfc;
+    padding-top: 50px;  
+    /* margin-top: -50px; */
+}
+.top_profile_div{
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+}
+.profile_left{
+    width: 160px;
+    float: left;
+}
+.profile_right{
+    float: left;
+}
+.profile_name{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.main_profile_img{
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25); 
+
+}
+.follow_section{
+    padding-top: 20px;
+}
+.bio{
+    text-align: justify;
+    padding: 15px;
+}
+.follow{
+    margin-top: 10px;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    background: #207398;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+.link_section{
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+    /* background: white; */
+    /* border-radius: 20px; */
+    margin-top: 20px;
+    border-top: 3px solid black;
+    margin-left: 200px;
+    border-bottom: 3px solid black;
+    padding-left: 10px;
+    /* padding-left: 20px; */
+    
+}
+.first_logo{
+    text-decoration: none;
+    color: white;
+}
+.black{
+    color: #000;
+}
+.highlight1{
+    color: green;
+}
+.highlight2{
+    color: green;
+}
+.link_section a{
+    /* color: black; */
+    width: auto;
+    margin-right: 10px;
+    text-decoration: none;
+    display: block;
+    float: left;
+    font-weight:bolder;
+    /* height: 50px; */
+}
+.link_section a:hover{
+    text-decoration: underline;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.question_section_profile{
+    display: block;
 }

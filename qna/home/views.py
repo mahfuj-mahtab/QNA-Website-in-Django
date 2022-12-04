@@ -120,8 +120,61 @@ def pagination_view(request):
 def profile_view(request):
     if request.session['active'] == True:
         print("session available")
+        print(request.session["0"])
+        questions = Questions.objects.all().filter(u_email = request.session['0'])
+        answers = Answer.objects.all().filter(u_email = request.session['0'])
+        q=[]
+        for i in range(len(answers)):
+            q.append(answers[i].Q_ID)
+            q2 = Questions.objects.filter(id = answers[i].Q_ID)
+        q50 = Questions.objects.filter(id__in = q)
+        print(q50)
+        print(q)
+        # q = []
+        q_title = []
+
+        #     q_title.append(q2[0].title)
+        # print(q)
+        # print(q_title)
+        # print(questions)
         my_user = OurUser.objects.filter(email = request.session['0'])
-        return render(request,"profile.html",{"my_users" : my_user[0], "registered" : True})
+        print(len(q))
+        length = []
+        for i in range(0,len(q)):
+            length.append(i)
+        print(length)
+        return render(request,"profile.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions,"answers" : answers, "answered_question" : q50})
+    else:
+        print("sorry session not available")
+    return render(request,'profile.html')
+
+def profile_view_answer(request):
+    if request.session['active'] == True:
+        print("session available")
+        print(request.session["0"])
+        questions = Questions.objects.all().filter(u_email = request.session['0'])
+        answers = Answer.objects.all().filter(u_email = request.session['0'])
+        q=[]
+        for i in range(len(answers)):
+            q.append(answers[i].Q_ID)
+            q2 = Questions.objects.filter(id = answers[i].Q_ID)
+        q50 = Questions.objects.filter(id__in = q)
+        print(q50)
+        print(q)
+        # q = []
+        q_title = []
+
+        #     q_title.append(q2[0].title)
+        # print(q)
+        # print(q_title)
+        # print(questions)
+        my_user = OurUser.objects.filter(email = request.session['0'])
+        print(len(q))
+        length = []
+        for i in range(0,len(q)):
+            length.append(i)
+        print(length)
+        return render(request,"profile2.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions,"answers" : answers, "answered_question" : q50})
     else:
         print("sorry session not available")
     return render(request,'profile.html')

@@ -31,5 +31,6 @@ urlpatterns = [
     path('profile_setting/',profile_setting_view,name = 'profilesetting'),
     path('category/',category_view,name = 'category'),
     path('logout/', logout, name = 'logout'),
+    path('profile/answer/', profile_view_answer, name="profile_view")
 
 ]
