@@ -107,63 +107,21 @@
             <div class="right_main_container">
             
                 <div class="overview">
-                    <p class="p1">6.5k<br>  Questions</p>
-                    <p class="p1">6.3k<br>Answered</p>
-                    <p class="p1">99%<br>Answered</p>
+                    <p class="p1">{{ total_question }}<br>  Questions</p>
+                <p class="p1">{{ total_answer }}<br>Answered</p>
+                <p class="p1">{{ perchantage|floatformat:2 }}%<br>Answered</p>
     
                 </div>
                 
                 <div class="top_user">
                     <h3>Top Users</h3>
+                    {% for key,value  in user_list.items %}
                     <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
+                        <a href="/profile/{{ value.user }}"><img src="/static/img/{{ value.img }}"  alt="" class="top_user_logo"></a>
+                        <h4 class="name">{{ value.name }}</h4>
                     </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
-    
-                    <div class="user">
-                        <a href=""><img src="{% static 'img/mohot.jpg' %}"  alt="" class="top_user_logo"></a>
-                        <h4 class="name">Mahfuj Mahtab Mohot</h4>
-                    </div>
+                    {% endfor %}
+                   
                 </div>
              </div>
         </div>

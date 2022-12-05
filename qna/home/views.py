@@ -5,19 +5,98 @@ from category.models import Category
 from answer.models import Answer
 # Create your views here.
 def home_view(request):
+    user_email = OurUser.objects.all()
+    print(user_email)
+    
+    user_list={}
+    questions_info = Questions.objects.all()
+    count=0
+    for i in range(0,len(user_email)):
+        user_info = {}
+        c = 0
+        for j in range(0,len(questions_info)):
+            if(user_email[i].email == questions_info[j].u_email):
+                c+=1
+                if(count != 10):
+                    if(c == 1):
+                        print(user_email[i])
+                        user_info['name'] = user_email[i].name
+                        user_info['img'] = user_email[i].img
+                        user_info['user'] = user_email[i].user
+                        print(user_info)
+                        user_list[i] = user_info
+                        
+                        count+=1
+                    else:
+                        break
+                else:
+                    break
+
+    print(user_list)
+
     questions = Questions.objects.all()
+    total_question = len(questions)
+    answer = Answer.objects.all()
+    total_answer = 0
+
+    for i in range(0,total_question):
+        for j in range(0,len(answer)):
+            if questions[i].id == int(answer[j].Q_ID):
+                total_answer=total_answer + 1       
+    perchantage = (total_answer / total_question) * 100
+
+
     if request.session['active'] == True:
         print("session available")
         my_user = OurUser.objects.filter(email = request.session['0'])
-        return render(request,"index.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions})
+        return render(request,"index.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list})
     else:
         print("sorry session not available")
-        return render(request,"index.html",{"questions" : questions})
+        return render(request,"index.html",{"questions" : questions,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list})
 
 def about(request):
     return render(request,"about.html")
 
 def show_answer_view(request,id):
+    user_email = OurUser.objects.all()
+    print(user_email)
+    
+    user_list={}
+    questions_info = Questions.objects.all()
+    count=0
+    for i in range(0,len(user_email)):
+        user_info = {}
+        c = 0
+        for j in range(0,len(questions_info)):
+            if(user_email[i].email == questions_info[j].u_email):
+                c+=1
+                if(count != 10):
+                    if(c == 1):
+                        print(user_email[i])
+                        user_info['name'] = user_email[i].name
+                        user_info['img'] = user_email[i].img
+                        user_info['user'] = user_email[i].user
+                        print(user_info)
+                        user_list[i] = user_info
+                        
+                        count+=1
+                    else:
+                        break
+                else:
+                    break
+
+    print(user_list)
+
+    questions = Questions.objects.all()
+    total_question = len(questions)
+    answer = Answer.objects.all()
+    total_answer = 0
+
+    for i in range(0,total_question):
+        for j in range(0,len(answer)):
+            if questions[i].id == int(answer[j].Q_ID):
+                total_answer=total_answer + 1       
+    perchantage = (total_answer / total_question) * 100
     if(request.method == 'POST'):
         answer = request.POST['answer']
         a = Answer(Q_answer = answer, like = 0, dislike = 0,u_email = request.session['0'],Q_ID = id)
@@ -28,9 +107,9 @@ def show_answer_view(request,id):
         if request.session['active'] == True:
             print("session available")
             my_user = OurUser.objects.filter(email = request.session['0'])
-            return render(request,'answer.html',{"question": ques[0],"my_users" : my_user[0], "registered" : True,"answers" : ans})
+            return render(request,'answer.html',{"question": ques[0],"my_users" : my_user[0], "registered" : True,"answers" : ans,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list})
         else:
-            return render(request,'answer.html',{"question": ques[0],"answers" : ans})
+            return render(request,'answer.html',{"question": ques[0],"answers" : ans,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list})
 
 
 def search_view(request):
