@@ -57,6 +57,34 @@ def home_view(request):
 def about(request):
     return render(request,"about.html")
 
+def profile_view_other(request,u):
+    user = OurUser.objects.all().filter(user = u)
+    if(user[0].email == request.session['0']):
+        return HttpResponseRedirect("/profile")
+    else:
+        questions = Questions.objects.all().filter(u_email = user[0].email)
+        answers = Answer.objects.all().filter(u_email = request.session['0'])
+ 
+        
+        return render(request,"othersprofile.html",{"user": user[0],"questions" : questions})
+
+def profile_view_other_answer(request,u):
+    user = OurUser.objects.all().filter(user = u)
+    if(user[0].email == request.session['0']):
+        return HttpResponseRedirect("/profile")
+    else:
+        questions = Questions.objects.all().filter(u_email = user[0].email)
+        answers = Answer.objects.all().filter(u_email = user[0].email)
+        q=[]
+        for i in range(len(answers)):
+            q.append(answers[i].Q_ID)
+            q2 = Questions.objects.filter(id = answers[i].Q_ID)
+        q50 = Questions.objects.filter(id__in = q)
+
+
+        
+        return render(request,"othersprofile2.html",{"user": user[0],"questions" : questions,"answered_question" : q50})    
+
 def show_answer_view(request,id):
     user_email = OurUser.objects.all()
     print(user_email)
