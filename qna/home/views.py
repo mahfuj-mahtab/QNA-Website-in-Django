@@ -81,6 +81,59 @@ def profile_view_other(request,u):
         
         return render(request,"othersprofile.html",{"user": user[0],"questions" : questions})
 
+
+
+def search(request):
+    user_email = OurUser.objects.all()
+    print(user_email)
+    
+    user_list={}
+    questions_info = Questions.objects.all()
+    count=0
+    for i in range(0,len(user_email)):
+        user_info = {}
+        c = 0
+        for j in range(0,len(questions_info)):
+            if(user_email[i].email == questions_info[j].u_email):
+                c+=1
+                if(count != 10):
+                    if(c == 1):
+                        print(user_email[i])
+                        user_info['name'] = user_email[i].name
+                        user_info['img'] = user_email[i].img
+                        user_info['user'] = user_email[i].user
+                        print(user_info)
+                        user_list[i] = user_info
+                        
+                        count+=1
+                    else:
+                        break
+                else:
+                    break
+
+    print(user_list)
+
+    questions = Questions.objects.all()
+    total_question = len(questions)
+    answer = Answer.objects.all()
+    total_answer = 0
+
+    for i in range(0,total_question):
+        for j in range(0,len(answer)):
+            if questions[i].id == int(answer[j].Q_ID):
+                total_answer=total_answer + 1       
+    perchantage = (total_answer / total_question) * 100
+
+    if(request.method == 'GET'):
+        search = request.GET['search']
+        question = Questions.objects.filter(title__contains = search)
+        print(question)
+        if request.session['active'] == True:
+
+            my_user = OurUser.objects.filter(email = request.session['0'])
+        return render(request,"search.html",{"my_users" : my_user[0], "registered" : True,"questions" : question,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list,"search":search})
+        
+
 def profile_view_other_answer(request,u):
     user = OurUser.objects.all().filter(user = u)
     if(request.session['active'] == True and request.session['0'] == user[0].email):
@@ -313,8 +366,53 @@ def profile_setting_view(request):
     return HttpResponse('Hello profile setting page')
 
 
-def category_view(request):
-    return HttpResponse('Hello category page')
+def category_view(request,cat):
+    user_email = OurUser.objects.all()
+    print(user_email)
+    
+    user_list={}
+    questions_info = Questions.objects.all()
+    count=0
+    for i in range(0,len(user_email)):
+        user_info = {}
+        c = 0
+        for j in range(0,len(questions_info)):
+            if(user_email[i].email == questions_info[j].u_email):
+                c+=1
+                if(count != 10):
+                    if(c == 1):
+                        print(user_email[i])
+                        user_info['name'] = user_email[i].name
+                        user_info['img'] = user_email[i].img
+                        user_info['user'] = user_email[i].user
+                        print(user_info)
+                        user_list[i] = user_info
+                        
+                        count+=1
+                    else:
+                        break
+                else:
+                    break
+
+    print(user_list)
+
+    questions = Questions.objects.all()
+    total_question = len(questions)
+    answer = Answer.objects.all()
+    total_answer = 0
+
+    for i in range(0,total_question):
+        for j in range(0,len(answer)):
+            if questions[i].id == int(answer[j].Q_ID):
+                total_answer=total_answer + 1       
+    perchantage = (total_answer / total_question) * 100
+
+    question = Questions.objects.all().filter(cat_name = cat)
+
+    if request.session['active'] == True:
+
+        my_user = OurUser.objects.filter(email = request.session['0'])
+        return render(request,"search.html",{"my_users" : my_user[0], "registered" : True,"questions" : question,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list,"search":cat})
 
 def tag_view(request):
     return HttpResponse('Hello tag page')

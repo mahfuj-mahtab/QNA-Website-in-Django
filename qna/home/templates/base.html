@@ -18,8 +18,9 @@
   <div class="header">
       <div class="main_header">
           <h3 class="logo"><a href="/" class="first_logo"> ASK.COM </a></h3>
-          <form action="">
+          <form action="/search" method="GET">
               <input type="text" class="search" name="search" id="" placeholder="Search Your Question">
+              <input type="submit" value="Search" class="search_btn">
           </form>
           {% if registered == True %}
             <a href="/profile" class="profile_picture_a"><img src="/media/{{my_users.img }}" alt="" class="profile_picture"></a>
