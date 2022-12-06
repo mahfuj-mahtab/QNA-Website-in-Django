@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Edit</title>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <div class="full">
+            <div class="container">
+        <div class="main_container">
+           <div class="main_edit_section">
+                <h1 class="profile_edit_h1">Profile Edit</h1>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input class="input" type="text" name="fullname" placeholder="Enter Full Name" value="mohot"><br>
+                    <input class="input" type="password" name="password" placeholder="***********"> <br>
+                    <textarea class="input_textarea" name="bio" id="" cols="60" rows="20" placeholder="Edit Bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur provident sequi omnis reprehenderit dignissimos. Unde?</textarea> <br>
+                    <input class="input" type="number" name="phone" id="" placeholder="01765045048"> <br>
+                    <p class="im">Upload Profile Picture</p>
+                    <input class="input_file" type="file" name="img" id=""> <br>
+                    <input type="submit" value="Update" class="input_submit">
+
+
+
+                </form>
+           </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

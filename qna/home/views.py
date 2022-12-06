@@ -4,6 +4,17 @@ from questions.models import Questions
 from category.models import Category
 from answer.models import Answer
 # Create your views here.
+from django.core.files.storage import FileSystemStorage
+
+def upload(request):
+    if request.method == 'POST' and request.FILES['img']:
+        pass
+
+
+
+
+
+
 def home_view(request):
     user_email = OurUser.objects.all()
     print(user_email)
@@ -132,12 +143,22 @@ def show_answer_view(request,id):
     else:      
         ques = Questions.objects.filter(id = id)
         ans = Answer.objects.all().filter(Q_ID = id)
+        user_info_collection ={}
+        for i in range(0,len(ans)):
+            user_info_dict= {}
+            for j in range(0,len(user_email)):
+                if(ans[i].u_email == user_email[j].email):
+                    user_info_dict['name'] = user_email[j].name
+                    user_info_dict['img'] = user_email[j].img
+                    user_info_dict['user'] = user_email[j].user
+                    user_info_dict['answer'] = ans[i].Q_answer
+                user_info_collection[i] = user_info_dict
         if request.session['active'] == True:
             print("session available")
             my_user = OurUser.objects.filter(email = request.session['0'])
-            return render(request,'answer.html',{"question": ques[0],"my_users" : my_user[0], "registered" : True,"answers" : ans,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list})
+            return render(request,'answer.html',{"question": ques[0],"my_users" : my_user[0], "registered" : True,"answers" : ans,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list,"info":user_info_collection})
         else:
-            return render(request,'answer.html',{"question": ques[0],"answers" : ans,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list})
+            return render(request,'answer.html',{"question": ques[0],"answers" : ans,"total_question":total_question,"total_answer" : total_answer,"perchantage" : perchantage,"user_list" : user_list,"info":user_info_collection})
 
 
 def search_view(request):
@@ -226,31 +247,12 @@ def pagination_view(request):
 
 def profile_view(request):
     if request.session['active'] == True:
-        print("session available")
-        print(request.session["0"])
-        questions = Questions.objects.all().filter(u_email = request.session['0'])
-        answers = Answer.objects.all().filter(u_email = request.session['0'])
-        q=[]
-        for i in range(len(answers)):
-            q.append(answers[i].Q_ID)
-            q2 = Questions.objects.filter(id = answers[i].Q_ID)
-        q50 = Questions.objects.filter(id__in = q)
-        print(q50)
-        print(q)
-        # q = []
-        q_title = []
 
-        #     q_title.append(q2[0].title)
-        # print(q)
-        # print(q_title)
-        # print(questions)
+        questions = Questions.objects.all().filter(u_email = request.session['0'])
+
         my_user = OurUser.objects.filter(email = request.session['0'])
-        print(len(q))
-        length = []
-        for i in range(0,len(q)):
-            length.append(i)
-        print(length)
-        return render(request,"profile.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions,"answers" : answers, "answered_question" : q50})
+      
+        return render(request,"profile.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions})
     else:
         print("sorry session not available")
     return render(request,'profile.html')
@@ -266,25 +268,35 @@ def profile_view_answer(request):
             q.append(answers[i].Q_ID)
             q2 = Questions.objects.filter(id = answers[i].Q_ID)
         q50 = Questions.objects.filter(id__in = q)
-        print(q50)
-        print(q)
-        # q = []
-        q_title = []
 
-        #     q_title.append(q2[0].title)
-        # print(q)
-        # print(q_title)
-        # print(questions)
         my_user = OurUser.objects.filter(email = request.session['0'])
-        print(len(q))
-        length = []
-        for i in range(0,len(q)):
-            length.append(i)
-        print(length)
+
         return render(request,"profile2.html",{"my_users" : my_user[0], "registered" : True,"questions" : questions,"answers" : answers, "answered_question" : q50})
     else:
         print("sorry session not available")
     return render(request,'profile.html')
+
+def profileedit(request):
+    if(request.method == 'POST'):
+        fullname = request.POST['fullname']
+        password = request.POST['password']
+        bio = request.POST['bio']
+        number = request.POST['phone']
+        upload = request.FILES['img']
+        fss = FileSystemStorage()
+        file = fss.save(upload.name, upload)
+        file_url = fss.url(file)
+        user = OurUser.objects.filter(email = request.session['0']).update(name = fullname,password = password,Bio = bio,phone_No = number,img=upload.name)
+
+
+    else:
+        if(request.session['active'] == True):
+            return render(request,"profile_edit.html")
+        else:
+            return HttpResponseRedirect("/")
+
+
+
 
 def profile_setting_view(request):
     return HttpResponse('Hello profile setting page')

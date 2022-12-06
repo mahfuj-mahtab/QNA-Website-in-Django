@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import *
+from django.conf import settings #add this
+from django.conf.urls.static import static #add this
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view,name = "home"),
@@ -33,6 +35,8 @@ urlpatterns = [
     path('profile_setting/',profile_setting_view,name = 'profilesetting'),
     path('category/',category_view,name = 'category'),
     path('logout/', logout, name = 'logout'),
-    path('profile/answer/', profile_view_answer, name="profile_view")
+    path('profile/answer/', profile_view_answer, name="profile_view"),
+    path('profileedit/', profileedit,name ="Profile edit"),
+    path("upload", upload, name="upload")
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

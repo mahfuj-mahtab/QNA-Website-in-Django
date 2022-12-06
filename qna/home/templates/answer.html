@@ -50,14 +50,14 @@
 
                 <div class="answer_section">
                     <h1>Answer Section</h1>
-                    {% for answer in answers %}
+                    {% for key,value in info.items %}
                     <div class="answer_details2">
                         <div class="answer_details_top2">
                             <div class="answer_details_top_left2">
-                                <img src="{% static 'img/mohot.jpg' %} " alt="" class="question_profile2">
+                                <img src="/media/ " alt="" class="question_profile2">
                             </div>
                             <div class="answer_details_top_right2">
-                                <h3 class="q_title2">Mahfuj Mahtab Mohot</h3>
+                                <h3 class="q_title2">{{ value.name }}</h3>
                          
                                 
                              
@@ -117,7 +117,7 @@
                     <h3>Top Users</h3>
                     {% for key,value  in user_list.items %}
                     <div class="user">
-                        <a href="/profile/{{ value.user }}"><img src="/static/img/{{ value.img }}"  alt="" class="top_user_logo"></a>
+                        <a href="/profile/{{ value.user }}"><img src="/media/{{ value.img }}"  alt="" class="top_user_logo"></a>
                         <h4 class="name">{{ value.name }}</h4>
                     </div>
                     {% endfor %}
