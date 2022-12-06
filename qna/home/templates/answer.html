@@ -54,7 +54,7 @@
                     <div class="answer_details2">
                         <div class="answer_details_top2">
                             <div class="answer_details_top_left2">
-                                <img src="/media/ " alt="" class="question_profile2">
+                                <img src="/media/{{ value.img }} " alt="" class="question_profile2">
                             </div>
                             <div class="answer_details_top_right2">
                                 <h3 class="q_title2">{{ value.name }}</h3>
@@ -67,9 +67,9 @@
                         </div>
                         
                         <div class="answer">
-                            <p>{{ answer.Q_answer }}</p>
+                            <p>{{ value.answer }}</p>
                         </div>
-                        <span class="likedislikepart"> <span class="num">54</span>
+                        <!-- <span class="likedislikepart"> <span class="num">54</span>
                         <span class="material-symbols-outlined">
                                thumb_up
                             </span>
@@ -78,7 +78,7 @@
                             <span class="material-symbols-outlined">
                                 thumb_down
                                 </span>
-                        </span>
+                        </span> -->
                     </div>
                     {% endfor %}
 
@@ -117,7 +117,7 @@
                     <h3>Top Users</h3>
                     {% for key,value  in user_list.items %}
                     <div class="user">
-                        <a href="/profile/{{ value.user }}"><img src="/media/{{ value.img }}"  alt="" class="top_user_logo"></a>
+                        <a href="/profile/user/{{ value.user }}"><img src="/media/{{ value.img }}"  alt="" class="top_user_logo"></a>
                         <h4 class="name">{{ value.name }}</h4>
                     </div>
                     {% endfor %}
@@ -125,8 +125,24 @@
                 </div>
              </div>
         </div>
-        
     </div>
+    {% block pagination %}
+    <div class="pagination_section">
+        <div class="main_pagination_section">
+
+            <!-- <a href="" class="page_link">1</a>
+            <a href="" class="page_link">1</a>
+            <a href="" class="page_link">1</a>
+            <a href="" class="page_link">1</a>
+            <a href="" class="page_link">1</a>
+            <a href="" class="page_link">1</a>
+            <a href="" class="page_link">1</a> -->
+        </div>
+
+    </div>
+  
+
+    {% endblock pagination %}
     
     {% endblock body %}
     {% block footer %} <div class="footer2">All Right Reserved @ ask.com</div> {% endblock %}

@@ -7,24 +7,24 @@
     <div class="profile_div">
         <div class="top_profile_div">
             <div class="profile_left">
-                <img src="/static/img/mohot.jpg" alt="" class="main_profile_img">
+                <img src="/media/{{ my_users.img }}" alt="" class="main_profile_img">
             </div>
             <div class="profile_right">
                 <h2 class="profile_name">{{ my_users.name }}</h2>
                 <span class="follow_section">{{ my_users.Num_of_followers }}  Followers || {{ my_users.Num_of_following }}  Following</span>
                 <br>
-                <!-- <a href="" class="follow">Follow</a> -->
+                <a href="/profileedit" class="follow">Edit Profile</a>
             </div>
         </div>
         <div class="botoom_profile_div">
-            <p class="bio">{{ my_users.bio }}</p>
+            <p class="bio">{{ my_users.Bio }}</p>
         </div>
     </div>
     <div class="link_section">
         <a href="/profile" class="highlight2" >Questions(50)</a>
         <a href="/profile/answer" class="black" >You Answered(50)</a>
-        <a href="" class="black">Followers(50)</a>
-        <a href="" class="black">Followings(50)</a>
+        <!-- <a href="" class="black">Followers(50)</a>
+        <a href="" class="black">Followings(50)</a> -->
     </div>
 
     <div class="profile_bottom_section">
@@ -58,3 +58,4 @@
 
 
 {% endblock body %}
+{% block footer %} <div class="footer">All Right Reserved @ ask.com</div> {% endblock footer%}

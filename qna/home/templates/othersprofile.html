@@ -7,17 +7,17 @@
     <div class="profile_div">
         <div class="top_profile_div">
             <div class="profile_left">
-                <img src="/static/img/{{ user.img }}" alt="" class="main_profile_img">
+                <img src="/media/{{ user.img }}" alt="" class="main_profile_img">
             </div>
             <div class="profile_right">
                 <h2 class="profile_name">{{ user.name }}</h2>
                 <span class="follow_section">{{ user.Num_of_followers }} Followers || {{ user.Num_of_following }} Following</span>
                 <br>
-                <a href="" class="follow">Follow</a>
+                <!-- <a href="" class="follow">Follow</a> -->
             </div>
         </div>
         <div class="botoom_profile_div">
-            <p class="bio"> {{ user.bio }} </p>
+            <p class="bio"> {{ user.Bio }} </p>
         </div>
     </div>
     <div class="link_section">

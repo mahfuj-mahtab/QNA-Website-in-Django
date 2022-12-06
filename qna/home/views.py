@@ -72,18 +72,18 @@ def about(request):
 
 def profile_view_other(request,u):
     user = OurUser.objects.all().filter(user = u)
-    if(user[0].email == request.session['0']):
+    if(request.session['active'] == True and request.session['0'] == user[0].email):
         return HttpResponseRedirect("/profile")
     else:
         questions = Questions.objects.all().filter(u_email = user[0].email)
-        answers = Answer.objects.all().filter(u_email = request.session['0'])
+        answers = Answer.objects.all().filter(u_email = user[0].email)
  
         
         return render(request,"othersprofile.html",{"user": user[0],"questions" : questions})
 
 def profile_view_other_answer(request,u):
     user = OurUser.objects.all().filter(user = u)
-    if(user[0].email == request.session['0']):
+    if(request.session['active'] == True and request.session['0'] == user[0].email):
         return HttpResponseRedirect("/profile")
     else:
         questions = Questions.objects.all().filter(u_email = user[0].email)
@@ -142,6 +142,7 @@ def show_answer_view(request,id):
         answer = request.POST['answer']
         a = Answer(Q_answer = answer, like = 0, dislike = 0,u_email = request.session['0'],Q_ID = id)
         a.save()
+        return HttpResponseRedirect("/answer/id")
     else:      
         ques = Questions.objects.filter(id = id)
         ans = Answer.objects.all().filter(Q_ID = id)
@@ -288,12 +289,20 @@ def profileedit(request):
         fss = FileSystemStorage()
         file = fss.save(upload.name, upload)
         file_url = fss.url(file)
-        user = OurUser.objects.filter(email = request.session['0']).update(name = fullname,password = password,Bio = bio,phone_No = number,img=upload.name)
+
+        if(len(fullname) != 0 and len(password)!= 0 and len(bio) !=0 and len(number) > 10 and len(upload.name) != 0 ):
+            user = OurUser.objects.filter(email = request.session['0']).update(name = fullname,password = password,Bio = bio,phone_No = number,img=upload.name)
+        elif(len(password) == 0):
+            user = OurUser.objects.filter(email = request.session['0']).update(name = fullname,Bio = bio,phone_No = number,img=upload.name)
+        else:
+            print("please fillup all form")
+
 
 
     else:
         if(request.session['active'] == True):
-            return render(request,"profile_edit.html")
+            my_user = OurUser.objects.filter(email = request.session['0'])
+            return render(request,"profile_edit.html",{"my_users" : my_user[0], "registered" : True})
         else:
             return HttpResponseRedirect("/")
 
