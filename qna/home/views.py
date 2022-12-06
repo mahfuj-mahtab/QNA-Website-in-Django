@@ -7,6 +7,7 @@ from category.models import Category
 from answer.models import Answer
 # Create your views here.
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.hashers import make_password,check_password
 
 def upload(request):
     if request.method == 'POST' and request.FILES['img']:
@@ -19,7 +20,6 @@ def upload(request):
 
 def home_view(request):
     user_email = OurUser.objects.all()
-    print(user_email)
     
     user_list={}
     questions_info = Questions.objects.all()
@@ -195,7 +195,7 @@ def show_answer_view(request,id):
         answer = request.POST['answer']
         a = Answer(Q_answer = answer, like = 0, dislike = 0,u_email = request.session['0'],Q_ID = id)
         a.save()
-        return HttpResponseRedirect("/answer/id")
+        return HttpResponseRedirect("/answer/{}".format(id))
     else:      
         ques = Questions.objects.filter(id = id)
         ans = Answer.objects.all().filter(Q_ID = id)
@@ -226,7 +226,8 @@ def signup_view(request):
         email = request.POST['email']
         username = request.POST['username']
         password = request.POST['password']
-
+        passw = make_password(password)
+        print(passw)
         emailcount = OurUser.objects.all().filter(email = email)
 
         if(len(emailcount) > 0):
@@ -237,7 +238,7 @@ def signup_view(request):
                 print("more than one user name")
             else:
                 if(len(password) >= 8):
-                    user = OurUser(name = name, email = email,password = password,user = username,Num_of_followers = 0,Num_of_following = 0,img = "default.jpg",phone_No = 0,Bio = '')
+                    user = OurUser(name = name, email = email,password = passw,user = username,Num_of_followers = 0,Num_of_following = 0,img = "default.jpg",phone_No = 0,Bio = '')
                     user.save()
                     return HttpResponseRedirect("/")
                 else:
@@ -252,9 +253,11 @@ def login(request):
     if(request.method == 'POST'):
         email = request.POST['email']
         password = request.POST['password']
+        passw = make_password(password)
+        print(passw)
         ecount = OurUser.objects.all().filter(email = email)
         if(len(ecount) == 1):
-            if(ecount[0].password == password):
+            if(check_password(password,ecount[0].password) == True):
                 print("login")
                 request.session[0] = email
                 request.session['active'] = True
