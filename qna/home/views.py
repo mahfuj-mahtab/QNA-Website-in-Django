@@ -55,8 +55,12 @@ def home_view(request):
     for i in range(0,total_question):
         for j in range(0,len(answer)):
             if questions[i].id == int(answer[j].Q_ID):
-                total_answer=total_answer + 1       
-    perchantage = (total_answer / total_question) * 100
+                total_answer=total_answer + 1   
+
+    if(total_answer == 0 or total_question == 0):
+        perchantage = 0
+    else:
+        perchantage = (total_answer / total_question) * 100
 
 
     if request.session['active'] == True:
