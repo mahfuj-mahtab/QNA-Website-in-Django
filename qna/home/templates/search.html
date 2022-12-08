@@ -19,20 +19,22 @@
          <div class="left_main_container">
             <h3 class="search_h3">Showing Value For : {{ search }}</h3>
 
-            {% for question in questions %}
+
+            {% for key,value in question_dict.items %}
 
             <div class="question">
-                <!-- <div class="logo_section">
-                <a href="" class="logo_a"><img class="logo_img" src="{% static 'img/mohot.jpg' %}" alt=""></a>
-            </div> -->
+                <a href="/profile/user/{{ value.user }}" class="logo_a">
+                <div class="logo_section">
+                <img class="logo_img" src="/media/{{ value.img }}" alt="">
+            </div></a>
             <div class="rest">
-                <a class="title_a" href="/answer/{{ question.id }}"><h3 class="question_title">{{ question.title }}</h3></a>
+                <a class="title_a" href="/answer/{{ value.id }}"><h3 class="question_title">{{ value.title }}</h3></a>
                 <div class="category_section">
-                    <a href="/category/{{ question.cat_name }}" class="cat">{{ question.cat_name }}</a>
+                    <a href="/category/{{ value.cat_name }}" class="cat">{{ value.cat_name }}</a>
                    
                 
                 </div>
-                <p class="time">{{ question.time }}</p>
+                <p class="time">{{ value.time }}</p>
                 <!-- <p class="total_ans"><b>11 Answered</b></p> -->
 
             </div>

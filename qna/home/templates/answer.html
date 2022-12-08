@@ -26,7 +26,7 @@
                 <div class="answer_details">
                     <div class="answer_details_top">
                         <div class="answer_details_top_left">
-                            <img src="{% static 'img/mohot.jpg' %} " alt="" class="question_profile">
+                            <img src="/media/{{question_user.img }} " alt="" class="question_profile">
                         </div>
                         <div class="answer_details_top_right">
                             <h3 class="q_title">{{ question.title }}</h3>
@@ -54,7 +54,7 @@
                     <div class="answer_details2">
                         <div class="answer_details_top2">
                             <div class="answer_details_top_left2">
-                                <img src="/media/{{ value.img }} " alt="" class="question_profile2">
+                               <a href="/profile/user/{{ value.user}}"> <img src="/media/{{ value.img }} " alt="" class="question_profile2"></a>
                             </div>
                             <div class="answer_details_top_right2">
                                 <h3 class="q_title2">{{ value.name }}</h3>
