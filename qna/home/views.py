@@ -7,6 +7,8 @@ from answer.models import Answer
 # Create your views here.
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.hashers import make_password,check_password
+from django.core.mail import send_mail
+import random
 
 def upload(request):
     if request.method == 'POST' and request.FILES['img']:
@@ -23,6 +25,7 @@ def home_view(request):
     user_list={}
     questions_info = Questions.objects.all()
     count=0
+
     for i in range(0,len(user_email)):
         user_info = {}
         c = 0
@@ -313,8 +316,40 @@ def logout(request):
     return HttpResponseRedirect("/")
 
 def recover(request):
-    return render(request, "Recover.html")
+    if(request.method == 'POST'):
+        email = request.POST['email']
+        o = OurUser.objects.filter(email = email)
+        if(len(o) == 1):
+            r = random.randint(100000,999999)
+            send_mail(
+                'Password Recovery Email',
+                'Here is the Code : {}'.format(r),
+                'itstechnerd@gmail.com',
+                ['{}'.format(email)],
+                fail_silently=False,
+            )
+            request.session['verify'] = r
+            return HttpResponseRedirect("/verify")
+        else:
+            print("sorry email not available")
 
+    else:
+        if(request.session['active'] == False):
+            return render(request, "Recover.html")
+        else:
+            return HttpResponseRedirect("/")
+def verify(request):
+    if(request.method == 'POST'):
+        n = request.POST['verify']
+        print(request.session['verify'])
+        print(n)
+        if(int(request.session['verify']) == int(n)):
+            print("yess success")
+        else:
+            print("failed")
+    return render(request,"verify.html")
+def pass_changed(request):
+    pass
 def ask_question_view(request):
     if(request.method == 'POST'):
         title = request.POST['title']

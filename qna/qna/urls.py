@@ -38,6 +38,7 @@ urlpatterns = [
     path('profile/answer/', profile_view_answer, name="profile_view"),
     path('profileedit/', profileedit,name ="Profile edit"),
     path("upload", upload, name="upload"),
-    path("search/", search,name="search")
+    path("search/", search,name="search"),
+    path("verify/",verify,name="verify")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -31,7 +31,8 @@
                 <div class="right_login_box">
                     <h3 class="login_title">Recover </h3>
 
-                    <form action="">
+                    <form action="" method="POST">
+                        {% csrf_token %}
                     
                         <input type="email" name="email" id="" placeholder="Enter Email Address">
                         <span class="material-symbols-outlined">
