@@ -329,6 +329,7 @@ def recover(request):
                 fail_silently=False,
             )
             request.session['verify'] = r
+            request.session[0] = email
             return HttpResponseRedirect("/verify")
         else:
             print("sorry email not available")
@@ -345,11 +346,28 @@ def verify(request):
         print(n)
         if(int(request.session['verify']) == int(n)):
             print("yess success")
+            request.session['verified'] = True
+            return HttpResponseRedirect("/changed")
         else:
             print("failed")
     return render(request,"verify.html")
 def pass_changed(request):
-    pass
+    if(request.session['verified'] == True):
+        if(request.method == 'POST'):
+            pass1 = request.POST['password1']
+            pass2 = request.POST['password2']
+            if(pass1 == pass2):
+                pass3 = make_password(pass1)
+                account = OurUser.objects.filter(email = request.session['0']).update(password = pass3)
+                return HttpResponseRedirect("/login")
+            else:
+                print("password didnot match")
+                return HttpResponseRedirect("/changed")
+        else:
+            return render(request,"password.html")
+    else:
+        print("not verified")
+        return HttpResponseRedirect("/verify")
 def ask_question_view(request):
     if(request.method == 'POST'):
         title = request.POST['title']

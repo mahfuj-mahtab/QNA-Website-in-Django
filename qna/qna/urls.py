@@ -39,6 +39,7 @@ urlpatterns = [
     path('profileedit/', profileedit,name ="Profile edit"),
     path("upload", upload, name="upload"),
     path("search/", search,name="search"),
-    path("verify/",verify,name="verify")
+    path("verify/",verify,name="verify"),
+    path('changed/',pass_changed,name = "password changed"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
