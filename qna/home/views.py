@@ -34,11 +34,9 @@ def home_view(request):
                 c+=1
                 if(count != 5):
                     if(c == 1):
-                        print(user_email[i])
                         user_info['name'] = user_email[i].name
                         user_info['img'] = user_email[i].img
                         user_info['user'] = user_email[i].user
-                        print(user_info)
                         user_list[i] = user_info
                         
                         count+=1
@@ -47,7 +45,7 @@ def home_view(request):
                 else:
                     break
 
-    print(user_list)
+
 
     questions = Questions.objects.all()
     total_question = len(questions)
@@ -77,7 +75,7 @@ def home_view(request):
                 dict['time'] = questions[i].time
                 question_dict[i] = dict
                 
-    print(question_dict)
+
     if request.session['active'] == True:
         print("session available")
         my_user = OurUser.objects.filter(email = request.session['0'])
@@ -131,7 +129,7 @@ def search(request):
                 else:
                     break
 
-    print(user_list)
+
 
     questions = Questions.objects.all()
     total_question = len(questions)
@@ -184,7 +182,6 @@ def profile_view_other_answer(request,u):
 
 def show_answer_view(request,id):
     user_email = OurUser.objects.all()
-    print(user_email)
     
     user_list={}
     questions_info = Questions.objects.all()
@@ -210,7 +207,7 @@ def show_answer_view(request,id):
                 else:
                     break
 
-    print(user_list)
+
 
     questions = Questions.objects.all()
     total_question = len(questions)
@@ -262,7 +259,6 @@ def signup_view(request):
         username = request.POST['username']
         password = request.POST['password']
         passw = make_password(password)
-        print(passw)
         emailcount = OurUser.objects.all().filter(email = email)
 
         if(len(emailcount) > 0):
@@ -288,8 +284,6 @@ def login(request):
     if(request.method == 'POST'):
         email = request.POST['email']
         password = request.POST['password']
-        passw = make_password(password)
-        print(passw)
         ecount = OurUser.objects.all().filter(email = email)
         if(len(ecount) == 1):
             if(check_password(password,ecount[0].password) == True):
@@ -342,8 +336,6 @@ def recover(request):
 def verify(request):
     if(request.method == 'POST'):
         n = request.POST['verify']
-        print(request.session['verify'])
-        print(n)
         if(int(request.session['verify']) == int(n)):
             print("yess success")
             request.session['verified'] = True
@@ -404,7 +396,6 @@ def profile_view(request):
 def profile_view_answer(request):
     if request.session['active'] == True:
         print("session available")
-        print(request.session["0"])
         questions = Questions.objects.all().filter(u_email = request.session['0'])
         answers = Answer.objects.all().filter(u_email = request.session['0'])
         q=[]
@@ -458,7 +449,6 @@ def profile_setting_view(request):
 
 def category_view(request,cat):
     user_email = OurUser.objects.all()
-    print(user_email)
     
     user_list={}
     questions_info = Questions.objects.all()
@@ -484,7 +474,6 @@ def category_view(request,cat):
                 else:
                     break
 
-    print(user_list)
 
     questions = Questions.objects.all()
     total_question = len(questions)
